@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 /**
  * Client connects to server and organizes the use of GUIs for login and profile operations
  * 
@@ -11,15 +12,17 @@ import javax.swing.JOptionPane;
  */
 @SuppressWarnings("serial")
 public class Client extends JFrame{
-
+	String password;
+	String userName;
+	String host = "LocalHost";
+	int port = 4242;
+	User user;
+	
 	public static void main(String[] args) throws IOException{
-		String host = "LocalHost";
-		int port = 4242;
-		User user;
-	    String password;
-	    String userName;
 		
-		Socket socket = new Socket(host, port);
+		Client client = new Client();
+	   		
+		Socket socket = new Socket(client.host, client.port);
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 			oos.flush();
@@ -27,18 +30,51 @@ public class Client extends JFrame{
 			
 			//login page
 			boolean in  = false;
-			boolean end = false;
-			while (!in && !end) {
-				Login login = new Login();
+			boolean signup = false;
+			//boolean end = false;
+			//boolean done = false;
+			LoginGUI login = new LoginGUI();
+			SwingUtilities.invokeLater(login);
+			
+			client.userName = login.getUserName();
+			client.password = login.getPassword();
+			while (client.userName == null || client.password == null && !signup) {
+				client.userName = login.getUserName();
+				client.password = login.getPassword();
+				
+			}
+			//send login to server -> server looks for existing user
+			oos.writeObject(client.userName);
+			oos.writeObject(client.password);
+					
+			oos.flush();
+			Object o = ois.readObject();
+			if (o instanceof User) {
+				client.user = (User) o;
+				in = true;
+				System.out.println("Login Successful");
+			} else if (o instanceof String) {
+				System.out.println("Fail");
+				//int num1 = JOptionPane.showConfirmDialog(null, "Incorrect username password combination. Return to Login page?", "Profile", JOptionPane.OK_CANCEL_OPTION);
+				//if (num1 == 2 || num1 == -1) {
+				//end = true;
+				//}
+			}
+			//while (!in && !end) {
+				/*Login login = new Login();
 				login.setVisible(true);
 				login.pack();
 				login.setLocationRelativeTo(null);
 				login.setDefaultCloseOperation(EXIT_ON_CLOSE);
-			
+				login.a
+			    
+				
 				password = login.getPassword();
 				userName = login.getUsername();
-			
-				if (userName.equals(null)) {
+				System.out.println(password);
+				System.out.println(userName);
+				
+				
 					Registration reg = new Registration();
 					reg.setVisible(true);
 					reg.pack();
@@ -51,24 +87,15 @@ public class Client extends JFrame{
 					user = new User(password, userName);
 					user.setName(reg.getFullName());
 					in = true;
+					System.out.println(user);
+				*/
 				
-				} else {
 					//send login to server -> server looks for existing user
-					oos.writeObject(userName);
-					oos.writeObject(password);
-					oos.flush();
-					Object o = ois.readObject();
-					if (o instanceof User) {
-						user = (User) o;
-						in = true;
-					} else if (o instanceof String) {
-						int num = JOptionPane.showConfirmDialog(null, "Incorrect username password combination. Reenter username and password?", "Profile", JOptionPane.OK_CANCEL_OPTION);
-						if (num == 2 || num == -1) {
-							end = true;
-						}
-					}
-				}
-			}
+					//oos.writeObject(userName);
+					//oos.writeObject(password);
+					
+				
+			//}
 			//import profile
 			/*
 			 * String filename = null;

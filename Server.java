@@ -111,7 +111,7 @@ public class Server {
    			boolean hasNext = true;
     		while (hasNext) {
     			line = br.readLine();
-    			if (line.equals(null)) {
+    			if (line == null) {
     				hasNext = false;
     			} else {
     				data = line.split(",");

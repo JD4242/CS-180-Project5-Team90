@@ -7,7 +7,8 @@ import java.util.ArrayList;
  * @author Jonathan Dufresne
  * @version 5/1/2021
  */
-public class User {
+@SuppressWarnings("serial")
+public class User implements Serializable {
     private String password;
     private String userName;
     private String name;
@@ -285,7 +286,46 @@ public class User {
 					fw.append(",");
 				}
 			}
-						
+			fw.append("\n");			
+			fw.flush();
+			fw.close();
+		} catch (IOException e) {
+			//this shouldn't happen because this method creates it's own new export file
+		}
+		
+	}
+    
+    /**
+     * Export profile information to specific csv file
+     * @param filename
+     */
+    public void exportProfile(String filename) {
+		//write CSV
+		
+		File csv = new File(filename);
+		try (FileWriter fw = new FileWriter(csv)) {
+			fw.append(password);
+			fw.append(",");
+			fw.append(userName);
+			fw.append(",");
+			fw.append(name);
+			fw.append("\n");
+			fw.append(aboutMe);
+			fw.append("\n");
+			for (int i = 0; i < interests.size(); i++) {
+				fw.append(interests.get(i));
+				if (i < interests.size() - 1) {
+					fw.append(",");
+				}
+			}
+			fw.append("\n");
+			for (int i = 0; i < friends.size(); i++) {
+				fw.append(friendList.get(i));
+				if (i < friends.size() - 1) {
+					fw.append(",");
+				}
+			}
+			fw.append("\n");			
 			fw.flush();
 			fw.close();
 		} catch (IOException e) {
