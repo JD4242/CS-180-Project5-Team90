@@ -54,7 +54,7 @@ public class LoginGUI extends JComponent implements Runnable
         
         
         LoginGUI login = new LoginGUI();
-        content.add(login, bl.CENTER);
+        content.add(login, BorderLayout.CENTER);
         content.add(login);
         frame.setSize(600, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,7 +92,7 @@ public class LoginGUI extends JComponent implements Runnable
         
         
         JPanel panel2 = new JPanel();
-        JPanel panel3 = new JPanel();
+        //JPanel panel3 = new JPanel();
         panel2.add(spacerV);
         panel2.add(username);
         panel2.add(usernameText);
@@ -100,9 +100,7 @@ public class LoginGUI extends JComponent implements Runnable
         panel2.add(pass);
         panel2.add(passwordText);
         content.add(panel2, BorderLayout.CENTER);
-        if (login.done) {
-        	frame.dispose();
-        }
+       
     }
     public boolean getDone() {
     	return done;
