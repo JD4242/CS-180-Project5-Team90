@@ -16,7 +16,7 @@ public class Server {
 		String userName;
 		String password;
 		boolean found = false;
-		
+		users = readDataFile(data, users);
 		ServerSocket ss = new ServerSocket(4242);
 		Socket socket = ss.accept();
 		//System.out.println("Connected");
@@ -42,6 +42,9 @@ public class Server {
 		
 		//other operations
 		
+		
+		
+		ss.close();
 	}
 	
 	/**
@@ -50,7 +53,7 @@ public class Server {
 	 * @param ArrayList<User>, Text File
 	 * @return
 	 */
-	public void writeDataFile(File f, ArrayList<User> users) {
+	public static void writeDataFile(File f, ArrayList<User> users) {
 		User user;
 		try (FileWriter fw = new FileWriter(f)) {
 			for (int i = 0; i < users.size(); i++) {
@@ -93,7 +96,7 @@ public class Server {
 	 * @param ArrayList<User>, Text File
 	 * @return ArrayList<User>
 	 */
-	public ArrayList<User> readDataFile(File f, ArrayList<User> users) {
+	public static ArrayList<User> readDataFile(File f, ArrayList<User> users) {
 		String line = null;
     	String[] data;
     	String password;
@@ -104,33 +107,38 @@ public class Server {
     	ArrayList<String> userNames = new ArrayList<String>();
     	
     	//read CSV
-    	try (BufferedReader br = new BufferedReader(new FileReader(f))) {
-    		try {
-    			
+    	try (BufferedReader br = new BufferedReader(new FileReader(f))) {    			
+   			boolean hasNext = true;
+    		while (hasNext) {
     			line = br.readLine();
-    			data = line.split(",");
-    			password = data[0];
-    			userName = data[1];
-    			name = data[2];
+    			if (line.equals(null)) {
+    				hasNext = false;
+    			} else {
+    				data = line.split(",");
+    				password = data[0];
+    				userName = data[1];
+    				name = data[2];
     			
-    			line = br.readLine();
-    			aboutMe = line;
+    				line = br.readLine();
+    				aboutMe = line;
+    		
+    				line = br.readLine();
+    				data = line.split(",");
+    				for (int i = 0; i < data.length; i++) {
+    					interests.add(data[i]);
+    				}
     			
-    			line = br.readLine();
-    			data = line.split(",");
-    			for (int i = 0; i < data.length; i++) {
-    				interests.add(data[i]);
+    				line = br.readLine();
+    				data = line.split(",");
+    				for (int i = 0; i < data.length; i++) {
+    					userNames.add(data[i]);
+    				}
+    				users.add(new User(password, userName, name, aboutMe, interests, userNames));
+    				interests.clear();
+    				userNames.clear();
     			}
-    			
-    			line = br.readLine();
-    			data = line.split(",");
-    			for (int i = 0; i < data.length; i++) {
-    				userNames.add(data[i]);
-    			}
-    			users.add(new User(password, userName, name, aboutMe, interests, userNames));
-    		} catch (Exception e) {
-    			
     		}
+    		
     		br.close();
     		
     	} catch (IOException e) {

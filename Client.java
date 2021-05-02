@@ -1,15 +1,17 @@
 import java.net.*;
 import java.io.*;
 import java.util.ArrayList;
-
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /**
  * Client connects to server and organizes the use of GUIs for login and profile operations
  * 
  * @author Jonathan Dufresne
  * @version 5/1/2021
  */
-public class Client {
-	
+@SuppressWarnings("serial")
+public class Client extends JFrame{
+
 	public static void main(String[] args) throws IOException{
 		String host = "LocalHost";
 		int port = 4242;
@@ -23,26 +25,61 @@ public class Client {
 			oos.flush();
 			ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 			
-			//login page with option to create new account or import profile via CSV
+			//login page
+			boolean in  = false;
+			boolean end = false;
+			while (!in && !end) {
+				Login login = new Login();
+				login.setVisible(true);
+				login.pack();
+				login.setLocationRelativeTo(null);
+				login.setDefaultCloseOperation(EXIT_ON_CLOSE);
+			
+				password = login.getPassword();
+				userName = login.getUsername();
+			
+				if (userName.equals(null)) {
+					Registration reg = new Registration();
+					reg.setVisible(true);
+					reg.pack();
+					reg.setLocationRelativeTo(null);
+					reg.setDefaultCloseOperation(EXIT_ON_CLOSE);
+				
+					password = reg.getPassword();
+					userName = reg.getUsername();
+				
+					user = new User(password, userName);
+					user.setName(reg.getFullName());
+					in = true;
+				
+				} else {
+					//send login to server -> server looks for existing user
+					oos.writeObject(userName);
+					oos.writeObject(password);
+					oos.flush();
+					Object o = ois.readObject();
+					if (o instanceof User) {
+						user = (User) o;
+						in = true;
+					} else if (o instanceof String) {
+						int num = JOptionPane.showConfirmDialog(null, "Incorrect username password combination. Reenter username and password?", "Profile", JOptionPane.OK_CANCEL_OPTION);
+						if (num == 2 || num == -1) {
+							end = true;
+						}
+					}
+				}
+			}
 			//import profile
-			String filename = null;
+			/*
+			 * String filename = null;
+			 
 			try {
 				user = importProfile(filename, oos, ois);
 			} catch (ProfileException e) {
 				//GUI to manage exception
 			}
-		
-			//send login to server -> server looks for existing user
-			//oos.writeObject(userName);
-			oos.flush();
-			//oos.writeObject(password);
-		
-			Object o = ois.readObject();
-			if (o instanceof User) {
-				user = (User) o;
-			} else if (o instanceof String) {
-				//prompt to renter login or create new account
-			}
+			*/
+			
 			
 			//show profile GUI
 			//other operations
