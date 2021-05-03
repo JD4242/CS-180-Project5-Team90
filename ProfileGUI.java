@@ -25,6 +25,7 @@ public class ProfileGUI extends javax.swing.JFrame {
         bluePanel = new javax.swing.JPanel();
         mainProfileLabel = new javax.swing.JLabel();
         userIcon = new javax.swing.JLabel();
+        logoutButton = new javax.swing.JButton();
         mintPanel = new javax.swing.JPanel();
         userRealName = new javax.swing.JLabel();
         userName = new javax.swing.JLabel();
@@ -45,6 +46,16 @@ public class ProfileGUI extends javax.swing.JFrame {
         userIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         userIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project5/penguin.jpg"))); // NOI18N
 
+        logoutButton.setBackground(new java.awt.Color(160, 231, 229));
+        logoutButton.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 14)); // NOI18N
+        logoutButton.setText("Log Out");
+        logoutButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(180, 248, 200), 1, true));
+        logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout bluePanelLayout = new javax.swing.GroupLayout(bluePanel);
         bluePanel.setLayout(bluePanelLayout);
         bluePanelLayout.setHorizontalGroup(
@@ -53,7 +64,8 @@ public class ProfileGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(bluePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(userIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mainProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mainProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         bluePanelLayout.setVerticalGroup(
@@ -63,6 +75,8 @@ public class ProfileGUI extends javax.swing.JFrame {
                 .addComponent(mainProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -201,6 +215,16 @@ public class ProfileGUI extends javax.swing.JFrame {
         interests.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }//GEN-LAST:event_intrestsButtonMouseClicked
 
+    private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
+        ConfirmGUI confirm = new ConfirmGUI();
+        
+        confirm.setVisible(true);
+        confirm.setLocationRelativeTo(null);
+        confirm.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
+        dispose();
+    }//GEN-LAST:event_logoutButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -242,6 +266,7 @@ public class ProfileGUI extends javax.swing.JFrame {
     private javax.swing.JButton exitButton;
     private javax.swing.JButton friendsButton;
     private javax.swing.JButton intrestsButton;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JLabel mainProfileLabel;
     private javax.swing.JPanel mintPanel;
     private javax.swing.JLabel nameLabel;

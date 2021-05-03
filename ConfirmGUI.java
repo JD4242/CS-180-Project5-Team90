@@ -7,14 +7,14 @@ package project5;
 
 /**
  *
- * @author Kyle
+ * @author Chaot
  */
-public class InterestsGUI extends javax.swing.JFrame {
+public class ConfirmGUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form Interests
+     * Creates new form ConfirmGUI
      */
-    public InterestsGUI() {
+    public ConfirmGUI() {
         initComponents();
     }
 
@@ -26,78 +26,62 @@ public class InterestsGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        exitButton = new javax.swing.JButton();
+        confirmLabel = new javax.swing.JLabel();
+        logoutButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        userInterests = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(160, 231, 229));
+        jPanel1.setBackground(new java.awt.Color(251, 231, 198));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
-        jLabel1.setText("INTERESTS");
+        confirmLabel.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        confirmLabel.setText("Are you sure you want to log out?");
 
-        exitButton.setBackground(new java.awt.Color(160, 231, 229));
-        exitButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        exitButton.setText("X");
-        exitButton.setBorder(null);
-        exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        logoutButton.setBackground(new java.awt.Color(251, 231, 198));
+        logoutButton.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 12)); // NOI18N
+        logoutButton.setText("Log out ");
+        logoutButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(251, 231, 198), 1, true));
+        logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exitButtonMouseClicked(evt);
+                logoutButtonMouseClicked(evt);
             }
         });
 
-        backButton.setBackground(new java.awt.Color(160, 231, 229));
-        backButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        backButton.setText("<");
-        backButton.setBorder(null);
+        backButton.setBackground(new java.awt.Color(251, 231, 198));
+        backButton.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 12)); // NOI18N
+        backButton.setText("Return to home");
+        backButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(251, 231, 198), 1, true));
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backButtonMouseClicked(evt);
             }
         });
 
-        jScrollPane1.setBackground(new java.awt.Color(160, 231, 229));
-
-        userInterests.setBackground(new java.awt.Color(160, 231, 229));
-        userInterests.setColumns(20);
-        userInterests.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 14)); // NOI18N
-        userInterests.setRows(5);
-        userInterests.setText("TODO: List of all user's interests");
-        jScrollPane1.setViewportView(userInterests);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 46, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(confirmLabel))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(exitButton)
-                    .addComponent(backButton))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(confirmLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -115,9 +99,14 @@ public class InterestsGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_exitButtonMouseClicked
+    private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
+        dispose();
+        
+        LoginGUI login = new LoginGUI();
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
+        login.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }//GEN-LAST:event_logoutButtonMouseClicked
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         dispose();
@@ -145,31 +134,28 @@ public class InterestsGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterestsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConfirmGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterestsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConfirmGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterestsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConfirmGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterestsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConfirmGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterestsGUI().setVisible(true);
+                new ConfirmGUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
-    private javax.swing.JButton exitButton;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel confirmLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea userInterests;
+    private javax.swing.JButton logoutButton;
     // End of variables declaration//GEN-END:variables
 }
