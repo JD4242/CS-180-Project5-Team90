@@ -7,11 +7,13 @@ import java.util.ArrayList;
  * @author Jonathan Dufresne
  * @version 5/1/2021
  */
-public class User {
+@SuppressWarnings("serial")
+public class User implements Serializable {
     private String password;
     private String userName;
     private String name;
     private String aboutMe;
+    private String email;
     private int numInterests;
     private int numFriends;
     private ArrayList<String> interests = new ArrayList<String>();
@@ -26,6 +28,7 @@ public class User {
         userName = null;
         name = null;
         aboutMe = null;
+        email = null;
         numInterests = 0;
         numFriends = 0;
     }
@@ -40,6 +43,7 @@ public class User {
         this.userName = userName;
         name = null;
         aboutMe = null;
+        email = null;
         numInterests = 0;
         numFriends = 0;
     }
@@ -50,14 +54,16 @@ public class User {
     * @param userName
     * @param name
     * @param aboutMe
+    * @param email
     * @param interests
     * @param friends
     */
-    public User(String pass, String userName, String name, String aboutMe, ArrayList<String> interests, ArrayList<String> userNames) {
+    public User(String pass, String userName, String name, String aboutMe, String email, ArrayList<String> interests, ArrayList<String> userNames) {
     	this.password = pass;
     	this.userName = userName;
     	this.name = name;
     	this.aboutMe = aboutMe;
+    	this.email = email;
     	this.interests = interests;
     	this.friendList = userNames;
     	numInterests = interests.size();
@@ -81,6 +87,7 @@ public class User {
     			this.password = data[0];
     			this.userName = data[1];
     			this.name = data[2];
+    			this.email = data[3];
     			
     			line = br.readLine();
     			this.aboutMe = line;
@@ -139,11 +146,35 @@ public class User {
     }
     
     /**
+     * Change email address
+     * @param email
+     */
+    public void setEmail(String email) {
+    	this.email = email;
+    }
+    
+    /**
      * Complete change of friends array list
      * @param ary
      */
     public void setFriends(ArrayList<User> ary) {
     	this.friends = ary;
+    }
+    
+    /**
+     * Complete change of friendList array list
+     * @param ary
+     */
+    public void setFriendList(ArrayList<String> ary) {
+    	this.friendList = ary;
+    }
+    
+    /**
+     * Complete change of interests array list
+     * @param ary
+     */
+    public void setInterests(ArrayList<String> ary) {
+    	this.interests = ary;
     }
     
     /**
@@ -176,6 +207,14 @@ public class User {
      */
     public String getAboutMe() {
         return aboutMe;
+    }
+    
+    /**
+     * Returns the email address
+     * @return
+     */
+    public String getEmail() {
+    	return email;
     }
     
     /**
@@ -269,6 +308,8 @@ public class User {
 			fw.append(userName);
 			fw.append(",");
 			fw.append(name);
+			fw.append(",");
+			fw.append(email);
 			fw.append("\n");
 			fw.append(aboutMe);
 			fw.append("\n");
@@ -285,7 +326,48 @@ public class User {
 					fw.append(",");
 				}
 			}
-						
+			fw.append("\n");			
+			fw.flush();
+			fw.close();
+		} catch (IOException e) {
+			//this shouldn't happen because this method creates it's own new export file
+		}
+		
+	}
+    
+    /**
+     * Export profile information to specific csv file
+     * @param filename
+     */
+    public void exportProfile(String filename) {
+		//write CSV
+		
+		File csv = new File(filename);
+		try (FileWriter fw = new FileWriter(csv)) {
+			fw.append(password);
+			fw.append(",");
+			fw.append(userName);
+			fw.append(",");
+			fw.append(name);
+			fw.append(",");
+			fw.append(email);
+			fw.append("\n");
+			fw.append(aboutMe);
+			fw.append("\n");
+			for (int i = 0; i < interests.size(); i++) {
+				fw.append(interests.get(i));
+				if (i < interests.size() - 1) {
+					fw.append(",");
+				}
+			}
+			fw.append("\n");
+			for (int i = 0; i < friends.size(); i++) {
+				fw.append(friendList.get(i));
+				if (i < friends.size() - 1) {
+					fw.append(",");
+				}
+			}
+			fw.append("\n");			
 			fw.flush();
 			fw.close();
 		} catch (IOException e) {
@@ -300,7 +382,7 @@ public class User {
      * @return
      */
     public String toString() {
-        String info = "INFO<" + name + "," + userName + "," + password + "," + numInterests + "," + numFriends + ">";
+        String info = "INFO<" + name + "," + email + "," + userName + "," + password + "," + numInterests + "," + numFriends + ">";
         String friend = "Friend List: \n";
         for (int i = 0; i < friends.size(); i++) {
             friend += friendList.get(i) + "\n";
@@ -319,6 +401,7 @@ public class User {
         password = null;
         userName = null;
         name = null;
+        email = null;
         aboutMe = null;
         friends.clear();
         interests.clear();

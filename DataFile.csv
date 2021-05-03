@@ -1,4 +1,4 @@
-Password,UserName,Name
-AboutMe,,
-Interest1,Interest2,Interest3
-UserName1,UserName2,Username3
+Password,UserName,Name,Email
+AboutMe,,,
+Interest1,Interest2,Interest3,
+UserName1,UserName2,Username3,

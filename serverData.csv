@@ -1,8 +1,8 @@
-password,User1,John Doe,
+password,User1,John Doe,email
 info about the user,,,
-interest1,interest2,interest3,interest4
-,,,
-12345,Jduf,Jonathan Dufresne,
+
+
+12345,Jduf,Jonathan Dufresne,email
 Purdue Engineering '24,,,
-Flight,Engineering,Longboarding,Mountain Biking
-User1,,,
+
+
