@@ -10,12 +10,18 @@ package project5;
  * @author Kyle
  */
 public class ProfileGUI extends javax.swing.JFrame {
+    
+    private boolean isPressed = false;
 
     /**
      * Creates new form Profile
      */
     public ProfileGUI() {
         initComponents();
+    }
+    
+    public boolean buttonPressed() {
+        return isPressed;
     }
 
     @SuppressWarnings("unchecked")
@@ -34,6 +40,7 @@ public class ProfileGUI extends javax.swing.JFrame {
         friendsButton = new javax.swing.JButton();
         intrestsButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
+        editProfileButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -124,10 +131,28 @@ public class ProfileGUI extends javax.swing.JFrame {
             }
         });
 
+        editProfileButton.setBackground(new java.awt.Color(180, 248, 200));
+        editProfileButton.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 12)); // NOI18N
+        editProfileButton.setText("Edit");
+        editProfileButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(180, 248, 200), 1, true));
+        editProfileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editProfileButtonActionPerformed(evt);
+            }
+        });
+        editProfileButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                editProfileButtonKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mintPanelLayout = new javax.swing.GroupLayout(mintPanel);
         mintPanel.setLayout(mintPanelLayout);
         mintPanelLayout.setHorizontalGroup(
             mintPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mintPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(mintPanelLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(mintPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,12 +165,10 @@ public class ProfileGUI extends javax.swing.JFrame {
                         .addGap(132, 132, 132))
                     .addGroup(mintPanelLayout.createSequentialGroup()
                         .addGroup(mintPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(intrestsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(friendsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mintPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(mintPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mintPanelLayout.createSequentialGroup()
                     .addGap(54, 54, 54)
@@ -156,7 +179,7 @@ public class ProfileGUI extends javax.swing.JFrame {
             mintPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mintPanelLayout.createSequentialGroup()
                 .addComponent(exitButton)
-                .addGap(57, 57, 57)
+                .addGap(58, 58, 58)
                 .addComponent(nameLabel)
                 .addGap(51, 51, 51)
                 .addGroup(mintPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -164,9 +187,11 @@ public class ProfileGUI extends javax.swing.JFrame {
                     .addComponent(userNameText))
                 .addGap(71, 71, 71)
                 .addComponent(friendsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(intrestsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(editProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(207, Short.MAX_VALUE))
             .addGroup(mintPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mintPanelLayout.createSequentialGroup()
                     .addGap(65, 65, 65)
@@ -225,6 +250,14 @@ public class ProfileGUI extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_logoutButtonMouseClicked
 
+    private void editProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProfileButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editProfileButtonActionPerformed
+
+    private void editProfileButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editProfileButtonKeyPressed
+        isPressed = true;
+    }//GEN-LAST:event_editProfileButtonKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -263,6 +296,7 @@ public class ProfileGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bluePanel;
+    private javax.swing.JButton editProfileButton;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton friendsButton;
     private javax.swing.JButton intrestsButton;
