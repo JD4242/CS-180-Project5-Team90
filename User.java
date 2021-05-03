@@ -13,6 +13,7 @@ public class User implements Serializable {
     private String userName;
     private String name;
     private String aboutMe;
+    private String email;
     private int numInterests;
     private int numFriends;
     private ArrayList<String> interests = new ArrayList<String>();
@@ -27,6 +28,7 @@ public class User implements Serializable {
         userName = null;
         name = null;
         aboutMe = null;
+        email = null;
         numInterests = 0;
         numFriends = 0;
     }
@@ -41,6 +43,7 @@ public class User implements Serializable {
         this.userName = userName;
         name = null;
         aboutMe = null;
+        email = null;
         numInterests = 0;
         numFriends = 0;
     }
@@ -51,14 +54,16 @@ public class User implements Serializable {
     * @param userName
     * @param name
     * @param aboutMe
+    * @param email
     * @param interests
     * @param friends
     */
-    public User(String pass, String userName, String name, String aboutMe, ArrayList<String> interests, ArrayList<String> userNames) {
+    public User(String pass, String userName, String name, String aboutMe, String email, ArrayList<String> interests, ArrayList<String> userNames) {
     	this.password = pass;
     	this.userName = userName;
     	this.name = name;
     	this.aboutMe = aboutMe;
+    	this.email = email;
     	this.interests = interests;
     	this.friendList = userNames;
     	numInterests = interests.size();
@@ -82,6 +87,7 @@ public class User implements Serializable {
     			this.password = data[0];
     			this.userName = data[1];
     			this.name = data[2];
+    			this.email = data[3];
     			
     			line = br.readLine();
     			this.aboutMe = line;
@@ -140,11 +146,35 @@ public class User implements Serializable {
     }
     
     /**
+     * Change email address
+     * @param email
+     */
+    public void setEmail(String email) {
+    	this.email = email;
+    }
+    
+    /**
      * Complete change of friends array list
      * @param ary
      */
     public void setFriends(ArrayList<User> ary) {
     	this.friends = ary;
+    }
+    
+    /**
+     * Complete change of friendList array list
+     * @param ary
+     */
+    public void setFriendList(ArrayList<String> ary) {
+    	this.friendList = ary;
+    }
+    
+    /**
+     * Complete change of interests array list
+     * @param ary
+     */
+    public void setInterests(ArrayList<String> ary) {
+    	this.interests = ary;
     }
     
     /**
@@ -177,6 +207,14 @@ public class User implements Serializable {
      */
     public String getAboutMe() {
         return aboutMe;
+    }
+    
+    /**
+     * Returns the email address
+     * @return
+     */
+    public String getEmail() {
+    	return email;
     }
     
     /**
@@ -270,6 +308,8 @@ public class User implements Serializable {
 			fw.append(userName);
 			fw.append(",");
 			fw.append(name);
+			fw.append(",");
+			fw.append(email);
 			fw.append("\n");
 			fw.append(aboutMe);
 			fw.append("\n");
@@ -309,6 +349,8 @@ public class User implements Serializable {
 			fw.append(userName);
 			fw.append(",");
 			fw.append(name);
+			fw.append(",");
+			fw.append(email);
 			fw.append("\n");
 			fw.append(aboutMe);
 			fw.append("\n");
@@ -340,7 +382,7 @@ public class User implements Serializable {
      * @return
      */
     public String toString() {
-        String info = "INFO<" + name + "," + userName + "," + password + "," + numInterests + "," + numFriends + ">";
+        String info = "INFO<" + name + "," + email + "," + userName + "," + password + "," + numInterests + "," + numFriends + ">";
         String friend = "Friend List: \n";
         for (int i = 0; i < friends.size(); i++) {
             friend += friendList.get(i) + "\n";
@@ -359,6 +401,7 @@ public class User implements Serializable {
         password = null;
         userName = null;
         name = null;
+        email = null;
         aboutMe = null;
         friends.clear();
         interests.clear();

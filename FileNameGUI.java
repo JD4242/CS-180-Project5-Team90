@@ -26,7 +26,7 @@ public class FileNameGUI extends JComponent implements Runnable{
 	};
 	
 	public void run() {
-		JFrame frame = new JFrame("NAME");
+		JFrame frame = new JFrame("Import File");
         Container content = frame.getContentPane();
         BorderLayout bl = new BorderLayout(500, 50);
         content.setLayout(bl);

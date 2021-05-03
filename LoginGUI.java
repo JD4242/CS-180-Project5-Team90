@@ -47,7 +47,7 @@ public class LoginGUI extends JComponent implements Runnable
     };
     
     public void run() {
-        JFrame frame = new JFrame("NAME");
+        JFrame frame = new JFrame("LogIn");
         Container content = frame.getContentPane();
         BorderLayout bl = new BorderLayout(500, 50);
         content.setLayout(bl);
@@ -69,8 +69,8 @@ public class LoginGUI extends JComponent implements Runnable
         	frame.dispose();
         });
         
-        passwordText = new JPasswordField("Password", 20);
-        usernameText = new JTextField("Username", 20);
+        passwordText = new JPasswordField("", 20);
+        usernameText = new JTextField("", 20);
         
         username = new JLabel("Username:");
         pass = new JLabel("     Password:");
