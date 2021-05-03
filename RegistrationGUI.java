@@ -1,26 +1,26 @@
+package project5;
+
 /**
  *
  * @author Kyle
  */
-@SuppressWarnings("serial")
 public class RegistrationGUI extends javax.swing.JFrame {
     
     public String username;
     public String fullName;
     public String password;
     public String email;
-    public boolean exit;
+
     /**
      * Creates new form Registration
      */
     public RegistrationGUI() {
         initComponents();
         
-        username = null;
-        fullName = null;
-        password = null;
-        email = null;
-        exit = false;
+        username = userName.getText();
+        fullName = userFullName.getText();
+        password = userPassword.getText();
+        email = userEmail.getText();
     }
     
     public String getUsername() {
@@ -241,23 +241,16 @@ public class RegistrationGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_userEmailFocusGained
 
     private void exitButtonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_exitButtonFocusGained
-        exit = true;
-    	System.exit(0);
+        dispose();
     }//GEN-LAST:event_exitButtonFocusGained
 
     private void signUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseClicked
         dispose();
-        username = userName.getText();
-        fullName = userFullName.getText();
-        password = userPassword.getText();
-        email = userEmail.getText();
-        
-        //call following in client
-        /*ProfileGUI profile = new ProfileGUI();
+        ProfileGUI profile = new ProfileGUI();
         
         profile.setVisible(true);
         profile.setLocationRelativeTo(null);
-        profile.setDefaultCloseOperation(EXIT_ON_CLOSE);*/
+        profile.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_signUpButtonMouseClicked
 
     /**
@@ -306,7 +299,7 @@ public class RegistrationGUI extends javax.swing.JFrame {
     private javax.swing.JTextField userFullName;
     private javax.swing.JTextArea userInputs;
     private javax.swing.JTextField userName;
-    private javax.swing.JTextField userPassword;
-    private javax.swing.JTextField userPasswordConfirm;
+    private javax.swing.JPasswordField userPassword;
+    private javax.swing.JPasswordField userPasswordConfirm;
     // End of variables declaration//GEN-END:variables
 }

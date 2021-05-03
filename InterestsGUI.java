@@ -116,7 +116,7 @@ public class InterestsGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_exitButtonMouseClicked
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
@@ -125,7 +125,7 @@ public class InterestsGUI extends javax.swing.JFrame {
         
         profile.setVisible(true);
         profile.setLocationRelativeTo(null);
-        profile.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        profile.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_backButtonMouseClicked
 
     /**

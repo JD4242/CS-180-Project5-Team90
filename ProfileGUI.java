@@ -223,7 +223,7 @@ public class ProfileGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_exitButtonMouseClicked
 
     private void friendsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_friendsButtonMouseClicked
@@ -232,7 +232,7 @@ public class ProfileGUI extends javax.swing.JFrame {
         
         friends.setVisible(true);
         friends.setLocationRelativeTo(null);
-        friends.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        friends.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_friendsButtonMouseClicked
 
     private void intrestsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_intrestsButtonMouseClicked
@@ -241,7 +241,7 @@ public class ProfileGUI extends javax.swing.JFrame {
         
         interests.setVisible(true);
         interests.setLocationRelativeTo(null);
-        interests.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        interests.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_intrestsButtonMouseClicked
 
     private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
@@ -249,7 +249,7 @@ public class ProfileGUI extends javax.swing.JFrame {
         
         confirm.setVisible(true);
         confirm.setLocationRelativeTo(null);
-        confirm.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        confirm.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         dispose();
     }//GEN-LAST:event_logoutButtonMouseClicked

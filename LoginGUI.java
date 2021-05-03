@@ -1,3 +1,5 @@
+package project5;
+
 /**
  *
  * @author Kyle
@@ -6,8 +8,6 @@ public class LoginGUI extends javax.swing.JFrame {
     
     public String password;
     public String username;
-    public boolean reg;
-    public boolean exit;
 
     /**
      * Creates new form Login
@@ -15,10 +15,8 @@ public class LoginGUI extends javax.swing.JFrame {
     public LoginGUI() {
         initComponents();
         
-        password = null;
-        username = null;
-        reg = false;
-        exit = false;
+        password = passwordLabel.getText();
+        username = userNameText.getText();
     }
     
     public String getPassword() {
@@ -51,7 +49,7 @@ public class LoginGUI extends javax.swing.JFrame {
         welcomeText.setBackground(new java.awt.Color(160, 231, 229));
         welcomeText.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         welcomeText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        welcomeText.setText("Welcome!");
+        welcomeText.setText("X P L O R E");
         welcomeText.setBorder(null);
 
         javax.swing.GroupLayout bluePanelLayout = new javax.swing.GroupLayout(bluePanel);
@@ -59,9 +57,9 @@ public class LoginGUI extends javax.swing.JFrame {
         bluePanelLayout.setHorizontalGroup(
             bluePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bluePanelLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(welcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(welcomeText, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                .addContainerGap())
         );
         bluePanelLayout.setVerticalGroup(
             bluePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,8 +174,7 @@ public class LoginGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
-        exit = true;
-    	System.exit(0);
+        dispose();
     }//GEN-LAST:event_exitButtonMouseClicked
 
     private void userNameTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameTextFocusGained
@@ -188,29 +185,22 @@ public class LoginGUI extends javax.swing.JFrame {
         passwordLabel.setText("");
     }//GEN-LAST:event_passwordLabelFocusGained
 
-	private void signUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseClicked
+    private void signUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseClicked
         dispose();
-        reg = true;
-        
-        //call following in client
-        /*RegistrationGUI register = new RegistrationGUI();
+        RegistrationGUI register = new RegistrationGUI();
         
         register.setVisible(true);
         register.setLocationRelativeTo(null);
-        register.setDefaultCloseOperation(EXIT_ON_CLOSE);*/
+        register.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_signUpButtonMouseClicked
-	
+
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
         dispose();
-        password = passwordLabel.getText();
-        username = userNameText.getText();
-        
-        //call following in client
-        /*ProfileGUI profile = new ProfileGUI();
+        ProfileGUI profile = new ProfileGUI();
         
         profile.setVisible(true);
         profile.setLocationRelativeTo(null);
-        profile.setDefaultCloseOperation(EXIT_ON_CLOSE);*/
+        profile.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_loginButtonMouseClicked
 
     /**
@@ -254,7 +244,7 @@ public class LoginGUI extends javax.swing.JFrame {
     private javax.swing.JPanel creamPanel;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton loginButton;
-    private javax.swing.JTextField passwordLabel;
+    private javax.swing.JPasswordField passwordLabel;
     private javax.swing.JButton signUpButton;
     private javax.swing.JTextField userNameText;
     private javax.swing.JTextField welcomeText;
