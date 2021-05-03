@@ -20,8 +20,12 @@ public class ProfileGUI extends javax.swing.JFrame {
         initComponents();
     }
     
-    public boolean buttonPressed() {
+    public boolean getButtonPressed() {
         return isPressed;
+    }
+    
+    public void setButtonPressed(boolean isPressed) {
+        this.isPressed = isPressed;
     }
 
     @SuppressWarnings("unchecked")
