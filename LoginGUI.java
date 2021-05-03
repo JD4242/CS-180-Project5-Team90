@@ -1,5 +1,3 @@
-package project5;
-
 /**
  *
  * @author Kyle
@@ -8,6 +6,8 @@ public class LoginGUI extends javax.swing.JFrame {
     
     public String password;
     public String username;
+    public boolean reg;
+    public boolean exit;
 
     /**
      * Creates new form Login
@@ -15,8 +15,10 @@ public class LoginGUI extends javax.swing.JFrame {
     public LoginGUI() {
         initComponents();
         
-        password = passwordLabel.getText();
-        username = userNameText.getText();
+        password = null;
+        username = null;
+        reg = false;
+        exit = false;
     }
     
     public String getPassword() {
@@ -174,7 +176,8 @@ public class LoginGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
-        System.exit(0);
+        exit = true;
+    	System.exit(0);
     }//GEN-LAST:event_exitButtonMouseClicked
 
     private void userNameTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameTextFocusGained
@@ -185,22 +188,29 @@ public class LoginGUI extends javax.swing.JFrame {
         passwordLabel.setText("");
     }//GEN-LAST:event_passwordLabelFocusGained
 
-    private void signUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseClicked
+	private void signUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseClicked
         dispose();
-        RegistrationGUI register = new RegistrationGUI();
+        reg = true;
+        
+        //call following in client
+        /*RegistrationGUI register = new RegistrationGUI();
         
         register.setVisible(true);
         register.setLocationRelativeTo(null);
-        register.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        register.setDefaultCloseOperation(EXIT_ON_CLOSE);*/
     }//GEN-LAST:event_signUpButtonMouseClicked
-
+	
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
         dispose();
-        ProfileGUI profile = new ProfileGUI();
+        password = passwordLabel.getText();
+        username = userNameText.getText();
+        
+        //call following in client
+        /*ProfileGUI profile = new ProfileGUI();
         
         profile.setVisible(true);
         profile.setLocationRelativeTo(null);
-        profile.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        profile.setDefaultCloseOperation(EXIT_ON_CLOSE);*/
     }//GEN-LAST:event_loginButtonMouseClicked
 
     /**
@@ -244,7 +254,7 @@ public class LoginGUI extends javax.swing.JFrame {
     private javax.swing.JPanel creamPanel;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton loginButton;
-    private javax.swing.JPasswordField passwordLabel;
+    private javax.swing.JTextField passwordLabel;
     private javax.swing.JButton signUpButton;
     private javax.swing.JTextField userNameText;
     private javax.swing.JTextField welcomeText;
